@@ -1,0 +1,17 @@
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\bin\Debug\RUZ.NARFU.exe.config
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\bin\Debug\RUZ.NARFU.exe
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\bin\Debug\RUZ.NARFU.pdb
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\bin\Debug\HtmlAgilityPack.dll
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\bin\Debug\HtmlAgilityPack.pdb
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\bin\Debug\HtmlAgilityPack.xml
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\obj\Debug\RUZ.NARFU.csprojResolveAssemblyReference.cache
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\obj\Debug\MainWindow.g.cs
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\obj\Debug\App.g.cs
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\obj\Debug\RUZ.NARFU_MarkupCompile.cache
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\obj\Debug\RUZ.NARFU_MarkupCompile.lref
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\obj\Debug\MainWindow.baml
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\obj\Debug\RUZ.NARFU.g.resources
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\obj\Debug\RUZ.NARFU.Properties.Resources.resources
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\obj\Debug\RUZ.NARFU.csproj.GenerateResource.Cache
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\obj\Debug\RUZ.NARFU.exe
+c:\users\ivang\onedrive\documents\visual studio 2017\Projects\RUZ.NARFU\RUZ.NARFU\obj\Debug\RUZ.NARFU.pdb
