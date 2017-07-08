@@ -23,8 +23,9 @@ namespace RUZ.NARFU
     {
         public MainWindow()
         {
+            var wnd = new TimeTableSelector();
+            wnd.ShowDialog();
             InitializeComponent();
-
 
             List<Pair> pairs = new List<Pair>();
             var data = LoadData.LoadAll();
@@ -43,14 +44,14 @@ namespace RUZ.NARFU
                 if (y.Pairs[0].Num != "1")
                 {
                     var pair = new Pair();
-                    pair.Margin = new Thickness(230 * i + 20, 150 * j + 20, 0, 0);
+                    pair.Margin = new Thickness(250 * i + 20, 150 * j + 20, 0, 0);
                     j++;
                     pairs.Add(pair);
                 }
 
                 foreach (var z in y.Pairs)
                 {
-                    z.Margin = new Thickness(230 * i + 20, 150 * j + 20, 0, 0);
+                    z.Margin = new Thickness(250 * i + 20, 150 * j + 20, 0, 0);
                     j++;
                     pairs.Add(z);
                 }

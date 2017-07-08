@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RUZ.NARFU"
         mc:Ignorable="d"
-        Title="Ruz.NARFU" Height="1000" Width="1400" ResizeMode="NoResize" >
+        Title="Ruz.NARFU" Height="1000" Width="1520" >
     <Window.Resources>
         <local:TypeToColor x:Key="TypeConverter"/>
         <ItemsPanelTemplate x:Key="cnv">
@@ -19,13 +19,15 @@
         <ItemsControl Name="ic"  ItemsPanel="{StaticResource cnv}" Grid.ColumnSpan="2" Grid.Row="2"  >
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border Height="150" Width="230" Background="{Binding ElementName=type, Path=Text, Converter={StaticResource TypeConverter} }" Margin="{Binding Margin}" BorderThickness="1" BorderBrush="#e3e3e3">
+                    <Border Height="150" Width="250" Background="{Binding ElementName=type, Path=Text, Converter={StaticResource TypeConverter} }" Margin="{Binding Margin}" BorderThickness="1" BorderBrush="#e3e3e3">
                         <StackPanel>
-                            <TextBlock Text="{Binding Num}"/>
-                            <TextBlock Text="{Binding Time}"/>
-                            <TextBlock Name="type" Text="{Binding Type}"/>
-                            <TextBlock Text="{Binding Place}"/>
-                            <TextBlock Text="{Binding Name}"/>
+                            <DockPanel>
+                                <TextBlock Text="{Binding Num}" DockPanel.Dock="Left"/>
+                                <TextBlock Text="{Binding Time}" DockPanel.Dock="Right"/>
+                            </DockPanel>
+                            <TextBlock Name="type"  Text="{Binding Type}"/>
+                            <TextBlock Text="{Binding Place}" TextWrapping="Wrap"/>
+                            <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
                             <TextBlock Text="{Binding Lecturer}"/>
                             <TextBlock Text="{Binding Class}"/>
                             <TextBlock Text="{Binding Group}"/>

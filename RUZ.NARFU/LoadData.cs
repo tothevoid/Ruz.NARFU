@@ -14,7 +14,7 @@ namespace RUZ.NARFU
 
         public static TimeTable LoadAll()
         {
-            var doc = new HtmlDocument();
+           var doc = new HtmlDocument();
             doc.Load("ruz2.html", true);
             var mainNode = doc.DocumentNode.SelectSingleNode("//body").SelectNodes("//div");
 

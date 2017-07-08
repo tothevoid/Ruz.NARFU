@@ -1,0 +1,25 @@
+﻿<Window x:Class="RUZ.NARFU.TimeTableSelector"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:RUZ.NARFU"
+        mc:Ignorable="d"
+        Title="TimeTableSelector" Height="300" Width="300">
+    <Window.Resources>
+        <local:IndexToInstitute x:Key="IndexConverter"/>
+        <local:InstituteToFaculty x:Key="SchoolConverter"/>
+    
+    </Window.Resources>
+    <Grid>
+        <StackPanel>
+            <TextBlock Text="Выберите город" HorizontalAlignment="Center"/>
+            <ComboBox SelectedIndex="0" Name="cb" ItemsSource="{Binding Cities}"/>
+            <TextBlock Text="Высшие школы: "/>
+            <ComboBox Name="sb" ItemsSource="{Binding ElementName=cb, Path= SelectedIndex, Converter={StaticResource IndexConverter} }" />
+            <TextBlock Text="Факультет: "/>
+            <ComboBox ItemsSource="{Binding ElementName=sb, Path=SelectedValue , Converter={StaticResource SchoolConverter}}"/>
+        </StackPanel>
+        
+    </Grid>
+</Window>
