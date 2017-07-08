@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using HtmlAgilityPack;
 using System.Windows;
+using System.Net;
 
 namespace RUZ.NARFU
 {
@@ -14,7 +15,7 @@ namespace RUZ.NARFU
         public static TimeTable LoadAll()
         {
             var doc = new HtmlDocument();
-            doc.Load("ruz4.html", true);
+            doc.Load("ruz2.html", true);
             var mainNode = doc.DocumentNode.SelectSingleNode("//body").SelectNodes("//div");
 
 
@@ -62,7 +63,7 @@ namespace RUZ.NARFU
                                 switch (pair.Attributes[0].Value)
                                 {
                                     case ("time_para"):
-                                        Pair.Time = pair.InnerText;
+                                        Pair.Time = WebUtility.HtmlDecode( pair.InnerText).Trim();
                                         break;
                                     case ("num_para"):
                                         Pair.Num = pair.InnerText;
@@ -76,14 +77,16 @@ namespace RUZ.NARFU
                                             Pair.Lecturer = pair.ChildNodes.Where(x => x.Name == "nobr").First().InnerText;
                                         break;
                                     case ("auditorium"):
-                                        Pair.Place = pair.InnerText;
-                                        Pair.Class = pair.ChildNodes.Where(x => x.Name == "b").First().InnerText;
+                                       
+                                       var res = pair.ChildNodes.Where(x=>x.Name=="#text").LastOrDefault();
+                                        Pair.Place = res?.InnerHtml.Replace(',',' ').Trim();
+                                        Pair.Class = WebUtility.HtmlDecode(pair.ChildNodes.Where(x => x.Name == "b").First().InnerText);
                                         break;
                                     case ("lecturer"):
                                         Pair.Lecturer = pair.InnerText;
                                         break;
                                     case ("group"):
-                                        Pair.Lecturer = pair.InnerText;
+                                        Pair.Group = pair.InnerText;
                                         break;
                                 }
                             }

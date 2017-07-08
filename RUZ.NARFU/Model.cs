@@ -36,6 +36,6 @@ namespace RUZ.NARFU
         public string Lecturer { get; set; }
         public string Class { get; set; }
         public Thickness Margin { get; set; }
-        string group { get; set; }
+        public string Group { get; set; }
     }
 }
