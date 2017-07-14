@@ -5,12 +5,12 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace RUZ.NARFU
 {
     class VmBase
     {
-
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void Set<T>(ref T field, T value, [CallerMemberName] string propName = null)
@@ -24,4 +24,46 @@ namespace RUZ.NARFU
         }
 
     }
+
+    public class Command : ICommand
+    {
+        public event EventHandler CanExecuteChanged;
+        private readonly Action<object> action;
+
+        private readonly Action simpleAction;
+
+        public Command(Action<object> action)
+        {
+            this.action = action;
+        }
+
+        public Command(Action simpleAction)
+        {
+            this.simpleAction = simpleAction;
+        }
+
+        public bool CanExecute(object parameter)
+        {
+            return true;
+        }
+
+        public bool CanExecute()
+        {
+            return true;
+        }
+
+        public void Execute(object parameter)
+        {
+            action(parameter);
+        }
+
+        public void Execute()
+        {
+            simpleAction();
+        }
+
+    }
+
+    
+
 }

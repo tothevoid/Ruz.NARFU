@@ -57,6 +57,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\IndexToInstitute.cs" />
+    <Compile Include="Converters\InstituteToFaculty.cs" />
+    <Compile Include="Converters\TextToSign.cs" />
+    <Compile Include="Converters\TextToVisibility.cs" />
+    <Compile Include="MainVm.cs" />
     <Compile Include="SelectorVm.cs" />
     <Compile Include="TimeTableSelector.xaml.cs">
       <DependentUpon>TimeTableSelector.xaml</DependentUpon>
@@ -100,7 +105,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="prch.snippet" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

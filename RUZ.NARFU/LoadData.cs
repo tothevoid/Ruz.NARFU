@@ -6,16 +6,20 @@ using System.Threading.Tasks;
 using HtmlAgilityPack;
 using System.Windows;
 using System.Net;
+using System.Diagnostics;
+using System.IO;
 
 namespace RUZ.NARFU
 {
     class LoadData
     {
-
         public static TimeTable LoadAll()
         {
-           var doc = new HtmlDocument();
-            doc.Load("ruz2.html", true);
+            var doc = GetPage(TimeTableData.CurrentLink);
+
+            if (doc == null)
+                return null;
+
             var mainNode = doc.DocumentNode.SelectSingleNode("//body").SelectNodes("//div");
 
 
@@ -63,7 +67,7 @@ namespace RUZ.NARFU
                                 switch (pair.Attributes[0].Value)
                                 {
                                     case ("time_para"):
-                                        Pair.Time = WebUtility.HtmlDecode( pair.InnerText).Trim();
+                                        Pair.Time = WebUtility.HtmlDecode(pair.InnerText).Trim();
                                         break;
                                     case ("num_para"):
                                         Pair.Num = pair.InnerText;
@@ -77,9 +81,9 @@ namespace RUZ.NARFU
                                             Pair.Lecturer = pair.ChildNodes.Where(x => x.Name == "nobr").First().InnerText;
                                         break;
                                     case ("auditorium"):
-                                       
-                                       var res = pair.ChildNodes.Where(x=>x.Name=="#text").LastOrDefault();
-                                        Pair.Place = res?.InnerHtml.Replace(',',' ').Trim();
+
+                                        var res = pair.ChildNodes.Where(x => x.Name == "#text").LastOrDefault();
+                                        Pair.Place = res?.InnerHtml.Replace(',', ' ').Trim();
                                         Pair.Class = WebUtility.HtmlDecode(pair.ChildNodes.Where(x => x.Name == "b").First().InnerText);
                                         break;
                                     case ("lecturer"):
@@ -91,6 +95,13 @@ namespace RUZ.NARFU
                                 }
                             }
                         }
+                        if (!string.IsNullOrEmpty(Pair.Lecturer))
+                        {
+                            if (Pair.Name.Contains(Pair.Lecturer))
+                            {
+                                Pair.Lecturer = null;
+                            }
+                        }
                         currentDay.Pairs.Add(Pair);
                     }
                     currentWeek.Days.Add(currentDay);
@@ -99,5 +110,28 @@ namespace RUZ.NARFU
             }
             return timeTable;
         }
+
+        public static HtmlDocument GetPage(string path)
+        {
+            if (string.IsNullOrEmpty(path))
+                return null;
+
+          //  path = "http://ruz.narfu.ru/" + path;
+            HtmlDocument doc = new HtmlDocument();
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(path);
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if (response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream receiveStream = response.GetResponseStream();
+
+                doc.Load(receiveStream, true);
+                response.Close();
+                return doc;
+            }
+            return null;
+        }
     }
+
+
 }

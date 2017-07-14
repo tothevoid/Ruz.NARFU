@@ -38,4 +38,26 @@ namespace RUZ.NARFU
         public Thickness Margin { get; set; }
         public string Group { get; set; }
     }
+
+    public class School
+    {
+        public City City { get; set; }
+
+        public string Name { get; set; }
+
+        public string Link { get; set; }
+    }
+
+    public class Faculty
+    {
+        public string Link { get; set; }
+
+        public string Name { get; set; }
+
+        public string Type { get; set; }
+
+        public int Course { get; set; }
+        //public StudyType Type { get; set; }
+    }
+
 }

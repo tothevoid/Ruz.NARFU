@@ -5,20 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RUZ.NARFU"
         mc:Ignorable="d"
-        Title="TimeTableSelector" Height="300" Width="300">
+        Title="Настройка расписания" Height="300" Width="300" ResizeMode="NoResize">
     <Window.Resources>
         <local:IndexToInstitute x:Key="IndexConverter"/>
         <local:InstituteToFaculty x:Key="SchoolConverter"/>
     
     </Window.Resources>
     <Grid>
-        <StackPanel>
-            <TextBlock Text="Выберите город" HorizontalAlignment="Center"/>
+        <StackPanel Margin="10,20,10,0">
+            <TextBlock Text="Выберите город:" HorizontalAlignment="Center"/>
             <ComboBox SelectedIndex="0" Name="cb" ItemsSource="{Binding Cities}"/>
-            <TextBlock Text="Высшие школы: "/>
-            <ComboBox Name="sb" ItemsSource="{Binding ElementName=cb, Path= SelectedIndex, Converter={StaticResource IndexConverter} }" />
-            <TextBlock Text="Факультет: "/>
-            <ComboBox ItemsSource="{Binding ElementName=sb, Path=SelectedValue , Converter={StaticResource SchoolConverter}}"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" Text="Выберите школу: "/>
+            <ComboBox SelectedIndex="0" Name="sb" ItemsSource="{Binding ElementName=cb, Path= SelectedIndex, Converter={StaticResource IndexConverter} }" />
+            <TextBlock HorizontalAlignment="Center" Margin="0,20,0,0" Text="Выберите факультет: "/>
+            <ComboBox  Name="faculty" ItemsSource="{Binding ElementName=sb, Path=SelectedValue , Converter={StaticResource SchoolConverter}}"/>
+            <Button Content="Загрузить" Margin="0,30,0,0" Width="70" Background="White"  BorderBrush="Black"  Command="{Binding OkBtn}" CommandParameter="{Binding ElementName=faculty, Path=SelectedItem}" />
         </StackPanel>
         
     </Grid>
