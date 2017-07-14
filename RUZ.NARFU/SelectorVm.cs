@@ -18,14 +18,14 @@ namespace RUZ.NARFU
 
         public event Action Loaded;
 
-        public List<string> Cities { get; set; } = new List<string> {"Все", "Архангельск", "Северодвинск" };
+        public List<string> Cities { get; } = new List<string> {"Все", "Архангельск", "Северодвинск" };
 
         public ICommand OkBtn { get { return new Command(Load); } }
        
         private void Load(object param)
         {
             string name = (string)param;
-            TimeTableData.CurrentLink  =  TimeTableData.Faculties.Where(x => x.Name == name).First().Link;
+            tableLink  =  TimeTableData.Faculties.Where(x => x.Name == name).First().Link;
             Loaded.Invoke();
         }
 

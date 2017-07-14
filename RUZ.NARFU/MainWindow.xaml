@@ -15,6 +15,7 @@
         </ItemsPanelTemplate>
     </Window.Resources>
     <Grid>
+        <Button Height="10" Width="10" HorizontalAlignment="Left" VerticalAlignment="Top" Command="{Binding Settings}"/>
         <Viewbox>
             <Canvas/>
         </Viewbox>

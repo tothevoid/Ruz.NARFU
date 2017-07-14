@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace RUZ.NARFU
 {
-    class MainVm
+    class MainVm:VmBase
     {
         public MainVm()
         {
@@ -20,7 +20,7 @@ namespace RUZ.NARFU
 
         public List<Pair> Pairs { get; set; } = new List<Pair>();
 
-        private void LoadSettings()
+        private void LoadSettings(object param)
         {
             var wnd = new TimeTableSelector();
             wnd.ShowDialog();
@@ -28,11 +28,17 @@ namespace RUZ.NARFU
 
         private void Load()
         {
-            var doc = XDocument.Load("Settings.xml");
+            //XML data
+            if (string.IsNullOrEmpty(tableLink))
+            {
+                var doc = XDocument.Load("Settings.xml");
+                tableLink = @"http://ruz.narfu.ru/?timetable&group=" + doc.Element("Settings").Element("Table").Attribute("Link").Value;
+            }
 
-            TimeTableData.CurrentLink = @"http://ruz.narfu.ru/?timetable&group=" + doc.Element("Settings").Element("Table").Attribute("Link").Value;
+            var table = new TimeTableData();
             List<Pair> pairs = new List<Pair>();
-            var data = LoadData.LoadAll();
+
+            var data = table.GetTimeTable(tableLink);
 
             if (data == null)
                 return;

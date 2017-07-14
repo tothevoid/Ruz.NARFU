@@ -11,6 +11,8 @@ namespace RUZ.NARFU
 {
     class VmBase
     {
+        protected string tableLink;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected void Set<T>(ref T field, T value, [CallerMemberName] string propName = null)
@@ -30,24 +32,12 @@ namespace RUZ.NARFU
         public event EventHandler CanExecuteChanged;
         private readonly Action<object> action;
 
-        private readonly Action simpleAction;
-
         public Command(Action<object> action)
         {
             this.action = action;
         }
-
-        public Command(Action simpleAction)
-        {
-            this.simpleAction = simpleAction;
-        }
-
+    
         public bool CanExecute(object parameter)
-        {
-            return true;
-        }
-
-        public bool CanExecute()
         {
             return true;
         }
@@ -57,12 +47,10 @@ namespace RUZ.NARFU
             action(parameter);
         }
 
-        public void Execute()
-        {
-            simpleAction();
-        }
-
     }
+       
+
+    
 
     
 

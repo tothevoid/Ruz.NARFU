@@ -11,8 +11,13 @@ namespace RUZ.NARFU
         {
             int index = (int)value;
 
+
             if (TimeTableData.Schools.Count == 0)
-                TimeTableData.GetUniversities();
+            {
+                var table = new TimeTableData();
+                table.GetUniversities();
+            }
+              
             switch (index)
             {
                 case 1:

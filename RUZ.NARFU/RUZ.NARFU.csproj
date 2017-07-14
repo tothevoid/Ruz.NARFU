@@ -61,8 +61,11 @@
     <Compile Include="Converters\InstituteToFaculty.cs" />
     <Compile Include="Converters\TextToSign.cs" />
     <Compile Include="Converters\TextToVisibility.cs" />
+    <Compile Include="Converters\TypeToColor.cs" />
+    <Compile Include="Enums\City.cs" />
     <Compile Include="MainVm.cs" />
     <Compile Include="SelectorVm.cs" />
+    <Compile Include="TimeTableData.cs" />
     <Compile Include="TimeTableSelector.xaml.cs">
       <DependentUpon>TimeTableSelector.xaml</DependentUpon>
     </Compile>
@@ -75,7 +78,6 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LoadData.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>

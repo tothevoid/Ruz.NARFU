@@ -7,26 +7,26 @@ using System.Windows;
 
 namespace RUZ.NARFU
 {
-    class TimeTable
+    public class TimeTable
     {
         public string GroupName { get; set; }
         public int GroupNum { get; set; }
         public List<Week> Weeks = new List<Week>();
     }
 
-    class Week
+    public class Week
     {
         public DateTime StartDate { get; set; }
         public List<Day> Days = new List<Day>();
     }
 
-    class Day
+    public class Day
     {
         public string Date { get; set; }
         public List<Pair> Pairs = new List<Pair>();
     }
 
-    class Pair
+    public class Pair
     {
         public string Num { get; set; }
         public string Time { get; set; }

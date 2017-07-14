@@ -17,7 +17,9 @@ namespace RUZ.NARFU
             if (TimeTableData.Faculties.Count != 0)
                 TimeTableData.Faculties.Clear();
 
-            TimeTableData.GetFaculties(school);
+            var table = new TimeTableData();
+            table.GetFaculties(school);
+
             return TimeTableData.Faculties.Select(x=>x.Name).ToList();
           
         }
