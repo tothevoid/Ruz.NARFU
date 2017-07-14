@@ -11,7 +11,7 @@ namespace RUZ.NARFU
 {
     class VmBase
     {
-        protected string tableLink;
+        protected static string tableLink;
 
         public event PropertyChangedEventHandler PropertyChanged;
 

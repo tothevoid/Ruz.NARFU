@@ -62,14 +62,20 @@
     <Compile Include="Converters\TextToSign.cs" />
     <Compile Include="Converters\TextToVisibility.cs" />
     <Compile Include="Converters\TypeToColor.cs" />
+    <Compile Include="Models\Day.cs" />
     <Compile Include="Enums\City.cs" />
-    <Compile Include="MainVm.cs" />
-    <Compile Include="SelectorVm.cs" />
+    <Compile Include="Models\Faculty.cs" />
+    <Compile Include="Models\Pair.cs" />
+    <Compile Include="Models\School.cs" />
+    <Compile Include="Models\TimeTable.cs" />
+    <Compile Include="ViewModels\MainVm.cs" />
+    <Compile Include="ViewModels\SelectorVm.cs" />
     <Compile Include="TimeTableData.cs" />
     <Compile Include="TimeTableSelector.xaml.cs">
       <DependentUpon>TimeTableSelector.xaml</DependentUpon>
     </Compile>
-    <Compile Include="VmBase.cs" />
+    <Compile Include="ViewModels\VmBase.cs" />
+    <Compile Include="Models\Week.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -88,7 +94,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

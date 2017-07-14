@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml.Linq;
 using System.Windows.Input;
+using System.Collections.ObjectModel;
 
 namespace RUZ.NARFU
 {
@@ -18,12 +19,20 @@ namespace RUZ.NARFU
 
         public ICommand Settings { get { return new Command(LoadSettings); } }
 
-        public List<Pair> Pairs { get; set; } = new List<Pair>();
+        public ObservableCollection<Pair> Pairs { get; set; } = new ObservableCollection<Pair>();
 
         private void LoadSettings(object param)
         {
+            string link = tableLink;
             var wnd = new TimeTableSelector();
             wnd.ShowDialog();
+            if (link != tableLink)
+            {
+                Pairs.Clear();
+                Load();  
+            }
+              
+
         }
 
         private void Load()
@@ -36,7 +45,7 @@ namespace RUZ.NARFU
             }
 
             var table = new TimeTableData();
-            List<Pair> pairs = new List<Pair>();
+
 
             var data = table.GetTimeTable(tableLink);
 
@@ -59,19 +68,18 @@ namespace RUZ.NARFU
                     var pair = new Pair();
                     pair.Margin = new Thickness(200 * i + 20, 150 * j + 20, 0, 0);
                     j++;
-                    pairs.Add(pair);
+                    Pairs.Add(pair);
                 }
 
                 foreach (var z in y.Pairs)
                 {
                     z.Margin = new Thickness(200 * i + 20, 150 * j + 20, 0, 0);
                     j++;
-                    pairs.Add(z);
+                    Pairs.Add(z);
                 }
                 i++;
                 j = 0;
             }
-            Pairs = pairs;
         }
     }
 }

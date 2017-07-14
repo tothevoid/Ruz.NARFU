@@ -119,7 +119,10 @@ namespace RUZ.NARFU
 
         public TimeTable GetTimeTable(string link)
         {
-            var doc = LoadPage(link);
+           //var doc = LoadPage(link);
+
+            var doc = new HtmlDocument();
+            doc.Load("ruz2.html", true);
 
             if (doc == null)
                 return null;

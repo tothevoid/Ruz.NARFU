@@ -25,7 +25,7 @@ namespace RUZ.NARFU
         private void Load(object param)
         {
             string name = (string)param;
-            tableLink  =  TimeTableData.Faculties.Where(x => x.Name == name).First().Link;
+            tableLink  = @"http://ruz.narfu.ru/"+  TimeTableData.Faculties.Where(x => x.Name == name).First().Link;
             Loaded.Invoke();
         }
 
