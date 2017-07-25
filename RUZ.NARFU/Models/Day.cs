@@ -2,7 +2,7 @@
 
 namespace RUZ.NARFU
 {
-    public class Day
+    class Day
     {
         public string Date { get; set; }
         public List<Pair> Pairs = new List<Pair>();

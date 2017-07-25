@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace RUZ.NARFU
 {
-    class VmBase
+    public class VmBase:INotifyPropertyChanged
     {
         protected static string tableLink;
 
@@ -25,6 +25,13 @@ namespace RUZ.NARFU
             }
         }
 
+        protected void OnPropertyChanged(string status)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(status));
+            }
+        }
     }
 
     public class Command : ICommand

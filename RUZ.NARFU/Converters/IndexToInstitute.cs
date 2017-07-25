@@ -9,8 +9,11 @@ namespace RUZ.NARFU
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+
             int index = (int)value;
 
+            if (index == -1)
+                return null;
 
             if (TimeTableData.Schools.Count == 0)
             {

@@ -2,8 +2,9 @@
 
 namespace RUZ.NARFU
 {
-    public class Pair
+    class Pair:VmBase
     {
+     
         public string Num { get; set; }
         public string Time { get; set; }
         public string Type { get; set; }
@@ -11,8 +12,9 @@ namespace RUZ.NARFU
         public string Name { get; set; }
         public string Lecturer { get; set; }
         public string Class { get; set; }
-        public Thickness Margin { get; set; }
         public string Group { get; set; }
+
+     
     }
 
 }

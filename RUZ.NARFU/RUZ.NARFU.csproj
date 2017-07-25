@@ -59,15 +59,19 @@
     </ApplicationDefinition>
     <Compile Include="Converters\IndexToInstitute.cs" />
     <Compile Include="Converters\InstituteToFaculty.cs" />
+    <Compile Include="Converters\ResizeHeight.cs" />
+    <Compile Include="Converters\ResizeWidth.cs" />
     <Compile Include="Converters\TextToSign.cs" />
     <Compile Include="Converters\TextToVisibility.cs" />
     <Compile Include="Converters\TypeToColor.cs" />
+    <Compile Include="Models\Headers.cs" />
     <Compile Include="Models\Day.cs" />
     <Compile Include="Enums\City.cs" />
     <Compile Include="Models\Faculty.cs" />
     <Compile Include="Models\Pair.cs" />
     <Compile Include="Models\School.cs" />
     <Compile Include="Models\TimeTable.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="ViewModels\MainVm.cs" />
     <Compile Include="ViewModels\SelectorVm.cs" />
     <Compile Include="TimeTableData.cs" />

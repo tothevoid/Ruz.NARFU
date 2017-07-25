@@ -5,63 +5,80 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:RUZ.NARFU"
         mc:Ignorable="d"
-        Title="Расписание" Height="1000" Width="1270" >
+        Title="Расписание" MinHeight="720" MinWidth="1235" Name="Wnd">
     <Window.Resources>
         <local:TypeToColor x:Key="TypeConverter"/>
         <local:TextToSign x:Key="SignsConverter"/>
+        <local:ResizeWidth x:Key="WidthConverter"/>
+        <local:ResizeHeight x:Key="HeightConverter"/>
         <local:TextToVisibility x:Key="VisibilityConverter"/>
-        <ItemsPanelTemplate x:Key="cnv" >
-            <Canvas Background="WhiteSmoke"  />
-        </ItemsPanelTemplate>
     </Window.Resources>
     <Grid>
-        <StackPanel>
-            <Menu Background="White">
+        <StackPanel Orientation="Vertical">
+            <Menu Background="WhiteSmoke">
                 <MenuItem Header="Загрузить"  Command="{Binding Settings}"/>
                 <MenuItem Header="Настройки"/>
             </Menu>
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <TextBlock Margin="30,0,0,0" Text="понедельник, 10.07.2017"/>
-                <TextBlock Margin="80,0,0,0" Text="вторник, 11.07.2017"/>
-                <TextBlock Margin="100,0,0,0" Text="среда, 12.07.2017"/>
-                <TextBlock Margin="90,0,0,0" Text="четверг, 13.07.2017"/>
-                <TextBlock Margin="110,0,0,0" Text="пятница, 14.07.2017"/>
-                <TextBlock Margin="100,0,0,0" Text="суббота, 15.07.2017"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Foreground="PaleVioletRed" Text="{Binding TableInfo}" FontSize="15"/>
             </StackPanel>
+            <ItemsControl  ItemsSource="{Binding Days}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <ItemsControl ItemsSource="{Binding}">
+                            <ItemsControl.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <StackPanel Orientation="Horizontal"/>
+                                </ItemsPanelTemplate>
+                            </ItemsControl.ItemsPanel>
+                            <ItemsControl.ItemTemplate>
+                                <DataTemplate>
+                                    <Border  CornerRadius="1" MinWidth="200" Height="20" Width="{Binding ElementName=Wnd, Path=Width,Converter={StaticResource WidthConverter}, Mode=TwoWay}" BorderThickness="1" BorderBrush="#e3e3e3">
+                                        <TextBlock HorizontalAlignment="Center" Text="{Binding DayInfo}"/>
+                                    </Border>
+                                </DataTemplate>
+                            </ItemsControl.ItemTemplate>
+                        </ItemsControl>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
         </StackPanel>
-
-        <ScrollViewer CanContentScroll ="True" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Grid.Row="2" Margin="0,50,0,0">
-            <Grid>
-                <Viewbox Height="1200">
-                    <Canvas/>
-                </Viewbox>
-                <ItemsControl ItemsPanel="{StaticResource cnv}" ItemsSource="{Binding Pairs}" Grid.ColumnSpan="2" Grid.Row="2"  >
+        <ScrollViewer CanContentScroll ="True" HorizontalScrollBarVisibility="Auto" Grid.ColumnSpan="2" Grid.Row="2" Margin="0,65,0,0">
+            <ItemsControl ItemsSource="{Binding Pairs}">
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Border CornerRadius="1" Height="150" Width="200" Background="{Binding ElementName=type, Path=Text, Converter={StaticResource TypeConverter} }" Margin="{Binding Margin}" BorderThickness="1" BorderBrush="#e3e3e3">
-                        <Grid>
-                            <TextBlock Text="{Binding Time}" HorizontalAlignment="Right" />
-                            <StackPanel>
-                                <TextBlock Margin="0.5,0,0,0"  Width="10" HorizontalAlignment="Left"  TextAlignment="Center" Text="{Binding Num}" />
-                                <TextBlock Margin="0,10,0,0" Name="type"  Text="{Binding Type}"/>
-                                <StackPanel>
-                                    <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
-                                    <TextBlock Name="lec" Text="{Binding Lecturer}" Visibility="{Binding ElementName=lec, Path=Text, Converter={StaticResource VisibilityConverter}}"/>
-                                </StackPanel>
-                                <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Name="cab" Text="{Binding Class}" FontWeight="DemiBold" TextWrapping="Wrap"/>
-                                    <TextBlock Text="{Binding ElementName=cab, Path=Text, Converter={StaticResource SignsConverter}}"/>
-                                    <TextBlock Text="{Binding Place}" TextWrapping="Wrap"/>
-                                </WrapPanel>
-                                <TextBlock TextWrapping="Wrap"  Text="{Binding Group}"/>
-
-                            </StackPanel>
-                        </Grid>
-                    </Border>
+                    <ItemsControl ItemsSource="{Binding}">
+                        <ItemsControl.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <StackPanel Orientation="Horizontal"/>
+                            </ItemsPanelTemplate>
+                        </ItemsControl.ItemsPanel>
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border CornerRadius="1" MaxHeight="175" MinHeight="150" MinWidth="200" Height="{Binding ElementName=Wnd, Path=Height, Converter={StaticResource HeightConverter}, Mode=TwoWay}" Width="{Binding ElementName=Wnd, Path=Width,Converter={StaticResource WidthConverter}, Mode=TwoWay}" Background="{Binding ElementName=type, Path=Text, Converter={StaticResource TypeConverter} }"  BorderThickness="1" BorderBrush="#e3e3e3">
+                                        <Grid>
+                                            <StackPanel>
+                                            <TextBlock Margin="0.5,0,0,0" HorizontalAlignment="Left"  TextAlignment="Center" Text="{Binding Num}" />
+                                            <TextBlock Margin="0,10,0,0" Name="type"  Text="{Binding Type}"/>
+                                            <StackPanel>
+                                                <TextBlock Text="{Binding Name}" TextWrapping="Wrap"/>
+                                                <TextBlock Name="lec" Text="{Binding Lecturer}" Visibility="{Binding ElementName=lec, Path=Text, Converter={StaticResource VisibilityConverter}}"/>
+                                            </StackPanel>
+                                            <WrapPanel Orientation="Horizontal">
+                                                <TextBlock Name="cab" Text="{Binding Class}" FontWeight="DemiBold" TextWrapping="Wrap"/>
+                                                <TextBlock Text="{Binding ElementName=cab, Path=Text, Converter={StaticResource SignsConverter}}"/>
+                                                <TextBlock Text="{Binding Place}" TextWrapping="Wrap"/>
+                                            </WrapPanel>
+                                            <TextBlock TextWrapping="Wrap"  Text="{Binding Group}"/>
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
-            </ItemsControl>
-        </Grid>
-   </ScrollViewer>
+        </ItemsControl>
+        </ScrollViewer>
     </Grid>
 </Window>

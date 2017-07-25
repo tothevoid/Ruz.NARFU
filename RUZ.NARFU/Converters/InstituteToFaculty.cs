@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Windows;
 using System.Windows.Data;
 
 namespace RUZ.NARFU
@@ -19,6 +20,9 @@ namespace RUZ.NARFU
 
             var table = new TimeTableData();
             table.GetFaculties(school);
+
+            if (table.LoadResult == Result.Failed)
+                MessageBox.Show("Проблемы с соединением");
 
             return TimeTableData.Faculties.Select(x=>x.Name).ToList();
           

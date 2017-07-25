@@ -6,44 +6,91 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
+using System.Xml.Linq;
 
 namespace RUZ.NARFU
 {
-    public class TimeTableData
+    public enum Result
+    {
+        Sucess,
+        Failed
+    }
+
+    class TimeTableData
     {
         private  HtmlDocument doc = new HtmlDocument();
 
         public static List<School> Schools = new List<School>();
 
-        public static List<Faculty> Faculties { get; private set; } = new List<Faculty>();
+        public static List<Faculty> Faculties { get;} = new List<Faculty>();
 
-        private HtmlDocument LoadPage(string path)
+        public Result LoadResult = Result.Failed;
+
+        private HtmlDocument LoadPage(string path, HTMLType type = HTMLType.Web)
         {
+            var doc = new HtmlDocument();
+
             if (path == null)
                 throw new NullReferenceException();
-            doc = new HtmlDocument();
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(path);
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
 
-            if (response.StatusCode == HttpStatusCode.OK)
+            switch (type)
             {
-                Stream receiveStream = response.GetResponseStream();
-                doc.Load(receiveStream, true);
-                response.Close();
-                return doc;
+                case (HTMLType.File):
+                    {            
+                        doc.Load(path, true);
+                        return doc;
+                    }
+                case (HTMLType.Web):
+                    {
+                        HttpWebRequest request = (HttpWebRequest)WebRequest.Create(path);
+                        HttpWebResponse response;
+                        try
+                        {
+                            response = (HttpWebResponse)request.GetResponse();
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Соединение отсутствует");
+                            return null;
+                        }
+                        if (response.StatusCode == HttpStatusCode.OK)
+                        {
+                            Stream receivedStream = response.GetResponseStream();
+                            doc.Load(receivedStream, true);
+                            response.Close();
+                            LoadResult = Result.Sucess;
+                            return doc;
+                        }
+                        break;
+                    }
             }
+            LoadResult = Result.Failed;
             return null;
+            
+      }
+
+        private enum HTMLType
+        {
+            Web,
+            File
         }
 
+
+        //returns schools of choosen university
         public static List<string> GetNames(City city)
         {
             return Schools.Where(x => x.City == city).Select(x => x.Name).ToList();
         }
 
+        //universities parser
         public void GetUniversities()
         {
             var link = @"http://ruz.narfu.ru";
             doc = LoadPage(link);
+
+            if (doc == null)
+                return;
 
             var mainNode = doc.DocumentNode.SelectSingleNode("//body").SelectNodes("//div").Where(x => x.Attributes.Count == 2).Where(x => x.Attributes[1].Value == "classic").First();
 
@@ -51,12 +98,12 @@ namespace RUZ.NARFU
 
             foreach (var div in divs)
             {
-                var elm = div.ChildNodes.Where(x => x.Name == "a").FirstOrDefault();
-                if (elm == null)
+                var cityTag = div.ChildNodes.Where(x => x.Name == "a").FirstOrDefault();
+                if (cityTag == null)
                     continue;
-                string name = elm.InnerHtml;
+                string name = cityTag.InnerHtml;
                 City city = City.Arkhagelsk;
-                if (elm.InnerHtml.Contains("Северодвинск"))
+                if (cityTag.InnerHtml.Contains("Северодвинск"))
                 {
                     city = City.Severodvinsk;
                     var sb = new StringBuilder();
@@ -69,14 +116,14 @@ namespace RUZ.NARFU
                 }
                 else
                     name = name.Trim();
-                Schools.Add(new School { City = city, Link = elm.Attributes[0].Value, Name = name });
-
+                Schools.Add(new School { City = city, Link = cityTag.Attributes[0].Value, Name = name });
             }
         }
 
+        //faculties parser
         public void GetFaculties(string school)
         {
-            //started with 1 course
+            //started with 1st course
             int currentCourse = 1;
 
             //shows which ones have parse troubles
@@ -84,7 +131,7 @@ namespace RUZ.NARFU
 
             string link = Schools.Where(x => x.Name == school).First().Link;
 
-            LoadPage(@"http://ruz.narfu.ru/" + link);
+            doc = LoadPage(@"http://ruz.narfu.ru/" + link);
 
             var mainNode = doc.DocumentNode.SelectSingleNode("//body").SelectNodes("//div").Where(x => x.Attributes[0].Value == "tab-content").First();
 
@@ -109,7 +156,7 @@ namespace RUZ.NARFU
                     var sb = new StringBuilder();
                     foreach (var x in splited)
                     {
-                        sb.Append(x + " ");
+                        sb.Append($"{x} ");
                     }
                     Faculties.Add(new Faculty { Type = type, Name = sb.ToString(), Link = courseInfo.Attributes[1].Value, Course = currentCourse });
                 }
@@ -119,10 +166,17 @@ namespace RUZ.NARFU
 
         public TimeTable GetTimeTable(string link)
         {
-           //var doc = LoadPage(link);
-
-            var doc = new HtmlDocument();
-            doc.Load("ruz2.html", true);
+            //load via webrequest
+            HtmlDocument doc;
+           
+           // doc = LoadPage(link);
+           
+          
+            //load via file
+         
+            doc = LoadPage("ruz2.html", HTMLType.File);
+           
+               
 
             if (doc == null)
                 return null;
@@ -130,7 +184,6 @@ namespace RUZ.NARFU
             var mainNode = doc.DocumentNode.SelectSingleNode("//body").SelectNodes("//div");
 
             var timeTable = new TimeTable();
-            //TODO: set group's name and num
 
             var tabContent = mainNode.Where(x => x.Attributes[0].Value == "container-fluid content" && x.Attributes[0].Name == "class").FirstOrDefault();
 
@@ -138,12 +191,27 @@ namespace RUZ.NARFU
                 return null;
 
             //Date of last table's update
+            
             string lastChange = tabContent.ChildNodes[1].InnerHtml;
+
+            timeTable.LastChange = WebUtility.HtmlDecode(lastChange).Trim(); ;
 
             var table = tabContent.ChildNodes.Where(x => x.Name == "div").FirstOrDefault();
 
             if (table == null)
                 return null;
+
+            string[] groupInfo = table.ChildNodes.Where(x => x.Name == "h4").FirstOrDefault().InnerHtml.Split().Where(x => !string.IsNullOrEmpty(x)).ToArray();
+
+            timeTable.GroupNum = groupInfo[0];
+
+            var sb = new StringBuilder();
+            foreach (var x in groupInfo.Skip(1))
+            {
+                sb.Append($"{x} ");
+            }
+
+            timeTable.GroupName = sb.ToString();
 
             var weeks = table.ChildNodes.Where(x => x.Name == "div").ToList();
 
@@ -153,7 +221,6 @@ namespace RUZ.NARFU
             foreach (var week in weeks)
             {
                 var currentWeek = new Week();
-                // TODO: set timeline of current week
                 var days = week.ChildNodes.Where(x => x.Name == "div").ToList();
 
                 foreach (var day in days)
@@ -187,7 +254,6 @@ namespace RUZ.NARFU
                                             Pair.Lecturer = pair.ChildNodes.Where(x => x.Name == "nobr").First().InnerText;
                                         break;
                                     case ("auditorium"):
-
                                         var res = pair.ChildNodes.Where(x => x.Name == "#text").LastOrDefault();
                                         Pair.Place = res?.InnerHtml.Replace(',', ' ').Trim();
                                         Pair.Class = WebUtility.HtmlDecode(pair.ChildNodes.Where(x => x.Name == "b").First().InnerText);
@@ -201,6 +267,8 @@ namespace RUZ.NARFU
                                 }
                             }
                         }
+                        if (!string.IsNullOrEmpty(Pair.Name))
+                            Pair.Num = $"{Pair.Num} ({Pair.Time})";
                         if (!string.IsNullOrEmpty(Pair.Lecturer))
                         {
                             if (Pair.Name.Contains(Pair.Lecturer))
@@ -217,5 +285,4 @@ namespace RUZ.NARFU
             return timeTable;
         }
     }
-
 }

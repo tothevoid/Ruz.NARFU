@@ -1,0 +1,969 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>САФУ: Расписание учебных занятий</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+<meta name="description" content="Сайт САФУ для публикации расписания учебных занятий">
+<meta name="keywords" content="САФУ, пары, занятия, расписание, студент, преподаватель"/>
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+
+<link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="/lib/bootstrap/css/bootstrap-theme.min.css">
+
+<link rel="stylesheet" type="text/css" href="/lib/gavrikov/ruz.css">
+
+<script src="https://code.jquery.com/jquery-1.11.0.js"></script>   <!-- 2 -->
+<script src="/lib/gavrikov/ruz.js"></script>
+<script src="/lib/bootstrap/js/bootstrap.js"></script>
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation" name="begin">
+    <div class="container-fluid header_container"> <!-- container -->
+      <div class="col-xs-5 col-sm-6 col-md-8">
+
+         <div class="hidden-xs hidden-sm header_title">
+         <a class="navbar-brand" href="http://ruz.narfu.ru"><span class="ruz">ruz</span>.narfu.ru /
+         <span>
+                            341601                Педагогическое образование                     </span>
+         </a>
+         </div>
+
+         <div class="visible-xs"><nobr>
+         <a style="padding-left: 0;" class="navbar-brand" href="http://ruz.narfu.ru"><span class="ruz">ruz</span>.narfu.ru</a></nobr>
+         </div>
+
+         <div class="visible-sm"><nobr>
+         <a class="navbar-brand" href="http://ruz.narfu.ru"><span class="ruz">ruz</span>.narfu.ru</a></nobr>
+         </div>
+
+
+      </div>
+      
+        <div class="col-xs-7 col-sm-6 col-md-4 cmd_header">
+            
+              
+                <div class="btn-group iCal">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                      <span class="hidden-xs">Добавить в&nbsp;ваш календарь <span class="cmd glyphicon glyphicon-file"></span></span>
+                      <span class="visible-xs">iCal <span class="cmd glyphicon glyphicon-file"></span></span>
+                  </button>
+                  <ul class="dropdown-menu pull-right">
+                    <li><a href="http://ruz.narfu.ru?icalendar&oid=4227&cod=341601&from=03.07.2017">Скачать</a></li>
+                    <li><a href="webcal://ruz.narfu.ru/?icalendar&oid=4227&cod=341601">Подписаться</a></li>
+                  </ul>
+                </div>
+
+              
+              <a href="javascript:history.go(-1)" class="btn btn-default btn-md">
+                  <span class="cmd glyphicon glyphicon-chevron-left"></span></a>
+                        <a href="./" class="btn btn-default btn-md"> <!--  hidden-xs -->
+              <span class="cmd glyphicon glyphicon-home"></span></a>
+        </div>
+
+            </div>
+</div>
+
+<div class="container-fluid content">
+
+
+    <p class="status">Расписание не&nbsp;менялось с&nbsp;16:31 7 июл</p>
+    <!-- Время последнего обновления -->
+
+    <!-- id="nav-groups" -->
+    <ul class="nav nav-tabs"> <!--   nav-pills -->
+    <!--<li class="li_title visible-xs">Неделя: </li>-->
+            <!-- active делать по #week_... -->
+        <li class="active">
+        <a data-target="#week_1" data-toggle="tab">
+        <!-- href="#week_1" -->
+        <!-- data-target="#week_1" -->
+            <span class="visible-xs">
+                3 июл            </span><!-- W -->
+            <span class="visible-sm visible-md">03.07.2017</span>
+            <span class="visible-lg">03.07.2017&ndash;08.07.2017</span>
+
+        </a></li>
+            <!-- active делать по #week_... -->
+        <li>
+        <a data-target="#week_2" data-toggle="tab">
+        <!-- href="#week_2" -->
+        <!-- data-target="#week_2" -->
+            <span class="visible-xs">
+                10 июл            </span><!-- W -->
+            <span class="visible-sm visible-md">10.07.2017</span>
+            <span class="visible-lg">10.07.2017&ndash;15.07.2017</span>
+
+        </a></li>
+            <!-- active делать по #week_... -->
+        <li>
+        <a data-target="#week_3" data-toggle="tab">
+        <!-- href="#week_3" -->
+        <!-- data-target="#week_3" -->
+            <span class="visible-xs">
+                17 июл            </span><!-- W -->
+            <span class="visible-sm visible-md">17.07.2017</span>
+            <span class="visible-lg">17.07.2017&ndash;22.07.2017</span>
+
+        </a></li>
+            <!-- active делать по #week_... -->
+        <li>
+        <a data-target="#week_4" data-toggle="tab">
+        <!-- href="#week_4" -->
+        <!-- data-target="#week_4" -->
+            <span class="visible-xs">
+                24 июл            </span><!-- W -->
+            <span class="visible-sm visible-md">24.07.2017</span>
+            <span class="visible-lg">24.07.2017&ndash;29.07.2017</span>
+
+        </a></li>
+            <!-- active делать по #week_... -->
+        <li>
+        <a data-target="#week_5" data-toggle="tab">
+        <!-- href="#week_5" -->
+        <!-- data-target="#week_5" -->
+            <span class="visible-xs">
+                31 июл            </span><!-- W -->
+            <span class="visible-sm visible-md">31.07.2017</span>
+            <span class="visible-lg">31.07.2017&ndash;05.08.2017</span>
+
+        </a></li>
+            <!-- active делать по #week_... -->
+        <li>
+        <a data-target="#week_6" data-toggle="tab">
+        <!-- href="#week_6" -->
+        <!-- data-target="#week_6" -->
+            <span class="visible-xs">
+                7 авг            </span><!-- W -->
+            <span class="visible-sm visible-md">07.08.2017</span>
+            <span class="visible-lg">07.08.2017&ndash;12.08.2017</span>
+
+        </a></li>
+        </ul>
+    <div class="tab-content">
+
+    <h4 class="visible-xs visible-sm">341601        Педагогическое образование</h4>
+
+    
+                                <div class="row tab-pane active" id="week_1">
+        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek hidden-xs hidden-sm">
+
+            понедельник,
+            03.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+                    
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek hidden-xs hidden-sm">
+
+            вторник,
+            04.07.2017            </div>
+
+                                                                                                                    
+                    
+                          
+                          
+                                                    
+                          <div class="timetable_sheet hidden-xs hidden-sm red">
+                          <span class="num_para">1</span>
+                                                      <span class="time_para">
+                                                    08:20&ndash;09:55</span>
+
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Теоретические основы начального курса математики (<nobr>Музыченко Н.А.</nobr>)</span>
+                          <!--<span class="lecturer"></span>-->
+
+                          
+                          <span class="auditorium">
+                              <!--<hr />-->
+                              <b>ауд.&nbsp;5211</b>,
+                               пр. Ленинградский, д. 40                          </span>
+
+                          </div>
+
+                          
+                    
+                          
+                          
+                                                    
+                          <div class="timetable_sheet hidden-xs hidden-sm red">
+                          <span class="num_para">2</span>
+                                                      <span class="time_para">
+                                                    10:10&ndash;11:45</span>
+
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Теоретические основы начального курса математики (<nobr>Музыченко Н.А.</nobr>)</span>
+                          <!--<span class="lecturer"></span>-->
+
+                          
+                          <span class="auditorium">
+                              <!--<hr />-->
+                              <b>ауд.&nbsp;5211</b>,
+                               пр. Ленинградский, д. 40                          </span>
+
+                          </div>
+
+                          
+                    
+                          
+                          
+                                                    
+                          <div class="timetable_sheet hidden-xs hidden-sm red">
+                          <span class="num_para">3</span>
+                                                      <span class="time_para">
+                                                    12:00&ndash;13:35</span>
+
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Теоретические основы начального курса математики (<nobr>Музыченко Н.А.</nobr>)</span>
+                          <!--<span class="lecturer"></span>-->
+
+                          
+                          <span class="auditorium">
+                              <!--<hr />-->
+                              <b>ауд.&nbsp;5211</b>,
+                               пр. Ленинградский, д. 40                          </span>
+
+                          </div>
+
+                          
+                    
+                
+            </div><!-- list -->
+
+             
+
+                    
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek hidden-xs hidden-sm">
+
+            среда,
+            05.07.2017            </div>
+
+                                                                                                                    
+                    
+                          
+                          
+                                                                                                                    <div class="timetable_sheet hidden-xs hidden-sm transparent">
+                                <span class="num_para">1</span>
+                                </div>
+                                                             <div class="timetable_sheet hidden-xs hidden-sm transparent">
+                                <span class="num_para">2</span>
+                                </div>
+                                                                                 
+                          <div class="timetable_sheet hidden-xs hidden-sm orange">
+                          <span class="num_para">3</span>
+                                                      <span class="time_para">
+                                                    12:00&ndash;13:35</span>
+
+                          <span class="kindOfWork">Консультация</span>
+                          <span class="discipline">Русский язык (<nobr>Марьянчик В.А.</nobr>)</span>
+                          <!--<span class="lecturer"></span>-->
+
+                          
+                          <span class="auditorium">
+                              <!--<hr />-->
+                              <b>ауд.&nbsp;5212</b>,
+                               пр. Ленинградский, д. 40                          </span>
+
+                          </div>
+
+                          
+                    
+                
+            </div><!-- list -->
+
+             
+
+                    
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek hidden-xs hidden-sm">
+
+            четверг,
+            06.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+                    
+                                        <div class="list col-md-2 today">
+            
+            <div class="dayofweek">
+
+            пятница,
+            07.07.2017            </div>
+
+                                                                                                                    
+                    
+                          
+                          
+                                                    
+                          <div class="timetable_sheet hidden-xs hidden-sm red">
+                          <span class="num_para">1</span>
+                                                      <span class="time_para">
+                                                    08:20&ndash;09:55</span>
+
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Русский язык (<nobr>Марьянчик В.А.</nobr>)</span>
+                          <!--<span class="lecturer"></span>-->
+
+                          
+                          <span class="auditorium">
+                              <!--<hr />-->
+                              <b>ауд.&nbsp;5211</b>,
+                               пр. Ленинградский, д. 40                          </span>
+
+                          </div>
+
+                          
+                          <div class="timetable_sheet_xs visible-xs visible-sm red">
+                          <span class="num_para">1</span>
+                                                      <span class="time_para">
+                                                    08:20&ndash;09:55</span>
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Русский язык</span>
+                          <span class="lecturer">(Марьянчик В.А.)</span>
+                          
+                          <!---->
+
+                          <span class="auditorium">
+
+                              <b>ауд.&nbsp;5211</b>,
+
+                               пр. Ленинградский, д. 40
+
+                          </span>
+
+                          </div>
+
+                          
+                    
+                          
+                          
+                                                    
+                          <div class="timetable_sheet hidden-xs hidden-sm red">
+                          <span class="num_para">2</span>
+                                                      <span class="time_para">
+                                                    10:10&ndash;11:45</span>
+
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Русский язык (<nobr>Марьянчик В.А.</nobr>)</span>
+                          <!--<span class="lecturer"></span>-->
+
+                          
+                          <span class="auditorium">
+                              <!--<hr />-->
+                              <b>ауд.&nbsp;5211</b>,
+                               пр. Ленинградский, д. 40                          </span>
+
+                          </div>
+
+                          
+                          <div class="timetable_sheet_xs visible-xs visible-sm red">
+                          <span class="num_para">2</span>
+                                                      <span class="time_para">
+                                                    10:10&ndash;11:45</span>
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Русский язык</span>
+                          <span class="lecturer">(Марьянчик В.А.)</span>
+                          
+                          <!---->
+
+                          <span class="auditorium">
+
+                              <b>ауд.&nbsp;5211</b>,
+
+                               пр. Ленинградский, д. 40
+
+                          </span>
+
+                          </div>
+
+                          
+                    
+                          
+                          
+                                                    
+                          <div class="timetable_sheet hidden-xs hidden-sm red">
+                          <span class="num_para">3</span>
+                                                      <span class="time_para">
+                                                    12:00&ndash;13:35</span>
+
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Русский язык (<nobr>Марьянчик В.А.</nobr>)</span>
+                          <!--<span class="lecturer"></span>-->
+
+                          
+                          <span class="auditorium">
+                              <!--<hr />-->
+                              <b>ауд.&nbsp;5211</b>,
+                               пр. Ленинградский, д. 40                          </span>
+
+                          </div>
+
+                          
+                          <div class="timetable_sheet_xs visible-xs visible-sm red">
+                          <span class="num_para">3</span>
+                                                      <span class="time_para">
+                                                    12:00&ndash;13:35</span>
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Русский язык</span>
+                          <span class="lecturer">(Марьянчик В.А.)</span>
+                          
+                          <!---->
+
+                          <span class="auditorium">
+
+                              <b>ауд.&nbsp;5211</b>,
+
+                               пр. Ленинградский, д. 40
+
+                          </span>
+
+                          </div>
+
+                          
+                    
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list last col-md-2">
+            
+            <div class="dayofweek">
+
+            суббота,
+            08.07.2017            </div>
+
+                                                                                                                    
+                    
+                          
+                          
+                                                    
+                          <div class="timetable_sheet hidden-xs hidden-sm red">
+                          <span class="num_para">1</span>
+                                                      <span class="time_para">
+                                                    08:20&ndash;09:55</span>
+
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Иностранный язык (<nobr>Астахова Т.Н.</nobr>)</span>
+                          <!--<span class="lecturer"></span>-->
+
+                          
+                          <span class="auditorium">
+                              <!--<hr />-->
+                              <b>ауд.&nbsp;119</b>,
+                               ул. Смольный Буян, д. 7                          </span>
+
+                          </div>
+
+                          
+                          <div class="timetable_sheet_xs visible-xs visible-sm red">
+                          <span class="num_para">1</span>
+                                                      <span class="time_para">
+                                                    08:20&ndash;09:55</span>
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Иностранный язык</span>
+                          <span class="lecturer">(Астахова Т.Н.)</span>
+                          
+                          <!---->
+
+                          <span class="auditorium">
+
+                              <b>ауд.&nbsp;119</b>,
+
+                               ул. Смольный Буян, д. 7
+
+                          </span>
+
+                          </div>
+
+                          
+                    
+                          
+                          
+                                                    
+                          <div class="timetable_sheet hidden-xs hidden-sm red">
+                          <span class="num_para">2</span>
+                                                      <span class="time_para">
+                                                    10:10&ndash;11:45</span>
+
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Иностранный язык (<nobr>Смирнова Н.С.</nobr>)</span>
+                          <!--<span class="lecturer"></span>-->
+
+                                                        <span class="group">Поток "1 курс ВШПиПО Немецкий язык"</span>
+                          
+                          <span class="auditorium">
+                              <!--<hr />-->
+                              <b>ауд.&nbsp;107</b>,
+                               ул. Смольный Буян, д. 7                          </span>
+
+                          </div>
+
+                          
+                          <div class="timetable_sheet_xs visible-xs visible-sm red">
+                          <span class="num_para">2</span>
+                                                      <span class="time_para">
+                                                    10:10&ndash;11:45</span>
+                          <span class="kindOfWork">Экзамен</span>
+                          <span class="discipline">Иностранный язык</span>
+                          <span class="lecturer">(Смирнова Н.С.)</span>
+                                                        <span class="group">Поток "1 курс ВШПиПО Немецкий язык"</span>
+                          
+                          <!---->
+
+                          <span class="auditorium">
+
+                              <b>ауд.&nbsp;107</b>,
+
+                               ул. Смольный Буян, д. 7
+
+                          </span>
+
+                          </div>
+
+                          
+                    
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />                </div><!-- row -->
+            <div class="row tab-pane" id="week_2">
+        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            понедельник,
+            10.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            вторник,
+            11.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            среда,
+            12.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            четверг,
+            13.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            пятница,
+            14.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list last col-md-2">
+            
+            <div class="dayofweek">
+
+            суббота,
+            15.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />                </div><!-- row -->
+            <div class="row tab-pane" id="week_3">
+        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            понедельник,
+            17.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            вторник,
+            18.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            среда,
+            19.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            четверг,
+            20.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            пятница,
+            21.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list last col-md-2">
+            
+            <div class="dayofweek">
+
+            суббота,
+            22.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />                </div><!-- row -->
+            <div class="row tab-pane" id="week_4">
+        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            понедельник,
+            24.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            вторник,
+            25.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            среда,
+            26.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            четверг,
+            27.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            пятница,
+            28.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list last col-md-2">
+            
+            <div class="dayofweek">
+
+            суббота,
+            29.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />                </div><!-- row -->
+            <div class="row tab-pane" id="week_5">
+        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            понедельник,
+            31.07.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            вторник,
+            01.08.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            среда,
+            02.08.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            четверг,
+            03.08.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            пятница,
+            04.08.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list last col-md-2">
+            
+            <div class="dayofweek">
+
+            суббота,
+            05.08.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />                </div><!-- row -->
+            <div class="row tab-pane" id="week_6">
+        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            понедельник,
+            07.08.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            вторник,
+            08.08.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            среда,
+            09.08.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            четверг,
+            10.08.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list col-md-2">
+            
+            <div class="dayofweek">
+
+            пятница,
+            11.08.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />        
+                                        <div class="list last col-md-2">
+            
+            <div class="dayofweek">
+
+            суббота,
+            12.08.2017            </div>
+
+                
+            </div><!-- list -->
+
+             
+
+            <br class="visible-xs" />                </div><!-- row -->
+            </div><!-- tab-content -->
+
+
+</div>
+
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-59155938-1', 'auto');
+ga('send', 'pageview');
+</script>
+
+</body>
+
+</html>
